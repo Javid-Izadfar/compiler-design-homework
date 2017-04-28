@@ -28,7 +28,7 @@ function findPrefix(string) {
 }
 function findSuffix(string) {
   outputs.suffixes = []
-  for (var i = string.length; i >= 1 ; i--) outputs.suffixes.push('\'' + string.substr(0, i) + '\'')
+  for (var i = 0; i < string.length; i++) outputs.suffixes.push('\'' + string.substr(i, string.length) + '\'')
   outputs.suffixes.push('ε')
   writeResult(outputs.suffixes, 'Suffixes')
 }
@@ -44,7 +44,8 @@ function findSubSeq(string) {
 }
 
 function writeResult(result, type){
-  console.log('\n');
+
   console.log( type + ' of "' + inputs.givenString +'" are: ');
   console.log('{' + result.toString() + '}');
+  console.log('\n');
 }
