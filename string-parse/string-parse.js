@@ -10,10 +10,13 @@ if (inputs.functionType == 'prefix') {
 } else if (inputs.functionType == 'suffix') {
   findSuffix(inputs.givenString)
 } else if (inputs.functionType == 'substring') {
+  findSubStr(inputs.givenString)
 } else if (inputs.functionType == 'subsequence') {
+  findSubSeq(inputs.givenString)
 } else if ( inputs.functionType == 'all') {
   findPrefix(inputs.givenString)
   findSuffix(inputs.givenString)
+  findSubStr(inputs.givenString)
 } else {
   console.log('Oops! please ask a real question');
 }
@@ -30,13 +33,18 @@ function findSuffix(string) {
   writeResult(outputs.suffixes, 'Suffixes')
 }
 function findSubStr(string) {
-  console.log('write substring');
+  outputs.substring = ['ε']
+  for (var i = 0; i < string.length; i++) {
+    for (var j = string.length - i; j >= 1 ; j--) outputs.substring.push('\'' + string.substr(i, j) + '\'')
+  }
+  writeResult(outputs.substring, 'Substring')
 }
 function findSubSeq(string) {
   console.log('write subsequence');
 }
 
 function writeResult(result, type){
+  console.log('\n');
   console.log( type + ' of "' + inputs.givenString +'" are: ');
   console.log('{' + result.toString() + '}');
 }
