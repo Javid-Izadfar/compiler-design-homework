@@ -4,6 +4,12 @@ let outputs = new Object()
 
 inputs.givenString = inputs[0] ? String(inputs[0]) : 'Lorem'
 inputs.functionType = inputs[1] ? inputs[1].toLowerCase() : 'all'
+inputs.shouldSort = inputs[2] ? inputs[2] : false
+
+if (inputs.functionType == ('false' || 'true') ) {
+  inputs.shouldSort = inputs.functionType
+  inputs.functionType = 'all'
+}
 
 if (inputs.functionType == 'prefix') {
   findPrefix(inputs.givenString)
@@ -44,6 +50,12 @@ function findSubSeq(string) {
 }
 
 function writeResult(result, type){
+
+  if (inputs.shouldSort) {
+    result.sort(function(first, second) {
+      return first.length - second.length || first.localeCompare(second);
+    });
+  }
 
   console.log( type + ' of "' + inputs.givenString +'" are: ');
   console.log('{' + result.toString() + '}');
