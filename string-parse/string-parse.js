@@ -52,7 +52,7 @@ function findSubSeq(string) {
   for (let i = 1; i < Math.pow(2, string.length); i++) {
       tempSubsequence = ''
       for (let j = 0; j < string.length; j++) if (i & (1 << j)) tempSubsequence += string[j]
-      outputs.subsequence.push('\'' + tempSubsequence + '\'')
+      if (!outputs.subsequence.includes('\'' + tempSubsequence + '\'')) outputs.subsequence.push('\'' + tempSubsequence + '\'')
   }
     writeResult(outputs.subsequence, 'Subsequences')
 }
