@@ -67,5 +67,11 @@ function writeResult(result, type){
 
   console.log( type + ' of "' + inputs.givenString +'" are: ');
   console.log('{' + result.toString() + '}');
+
+  fs.writeFile(type+'.txt', '[' + result.toString() + ']' , (err) => {
+    if (err) throw err;
+    console.log(type + ' have also been saved at ' + type.toLowerCase() + '.txt file.');
+  });
+
   console.log('\n');
 }
