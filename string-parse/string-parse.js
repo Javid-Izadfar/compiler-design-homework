@@ -30,28 +30,28 @@ if (inputs.functionType == 'prefix') {
 
 function findPrefix(string) {
   outputs.prefixes = ['ε']
-  for (var i = 1; i <= string.length; i++) outputs.prefixes.push('\'' + string.substr(0, i) + '\'')
+  for (let i = 1; i <= string.length; i++) outputs.prefixes.push('\'' + string.substr(0, i) + '\'')
   writeResult(outputs.prefixes, 'Prefixes')
 }
 function findSuffix(string) {
   outputs.suffixes = []
-  for (var i = 0; i < string.length; i++) outputs.suffixes.push('\'' + string.substr(i, string.length) + '\'')
+  for (let i = 0; i < string.length; i++) outputs.suffixes.push('\'' + string.substr(i, string.length) + '\'')
   outputs.suffixes.push('ε')
   writeResult(outputs.suffixes, 'Suffixes')
 }
 function findSubStr(string) {
   outputs.substring = ['ε']
-  for (var i = 0; i < string.length; i++) {
-    for (var j = string.length - i; j >= 1 ; j--) outputs.substring.push('\'' + string.substr(i, j) + '\'')
+  for (let i = 0; i < string.length; i++) {
+    for (let j = string.length - i; j >= 1 ; j--) outputs.substring.push('\'' + string.substr(i, j) + '\'')
   }
   writeResult(outputs.substring, 'Substrings')
 }
 function findSubSeq(string) {
   outputs.subsequence = []
   let tempSubsequence
-  for (var i = 1; i < Math.pow(2, string.length); i++) {
+  for (let i = 1; i < Math.pow(2, string.length); i++) {
       tempSubsequence = ''
-      for (var j = 0; j < string.length; j++) if (i & (1 << j)) tempSubsequence += string[j]
+      for (let j = 0; j < string.length; j++) if (i & (1 << j)) tempSubsequence += string[j]
       outputs.subsequence.push('\'' + tempSubsequence + '\'')
   }
     writeResult(outputs.subsequence, 'Subsequences')
