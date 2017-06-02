@@ -23,6 +23,7 @@ if (inputs.functionType == 'prefix') {
   findPrefix(inputs.givenString)
   findSuffix(inputs.givenString)
   findSubStr(inputs.givenString)
+  findSubSeq(inputs.givenString)
 } else {
   console.log('Oops! please ask a real question');
 }
@@ -43,10 +44,17 @@ function findSubStr(string) {
   for (var i = 0; i < string.length; i++) {
     for (var j = string.length - i; j >= 1 ; j--) outputs.substring.push('\'' + string.substr(i, j) + '\'')
   }
-  writeResult(outputs.substring, 'Substring')
+  writeResult(outputs.substring, 'Substrings')
 }
 function findSubSeq(string) {
-  console.log('write subsequence');
+  outputs.subsequence = []
+  let tempSubsequence
+  for (var i = 1; i < Math.pow(2, string.length); i++) {
+      tempSubsequence = ''
+      for (var j = 0; j < string.length; j++) if (i & (1 << j)) tempSubsequence += string[j]
+      outputs.subsequence.push('\'' + tempSubsequence + '\'')
+  }
+    writeResult(outputs.subsequence, 'Subsequences')
 }
 
 function writeResult(result, type){
